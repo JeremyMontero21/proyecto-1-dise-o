@@ -1,16 +1,16 @@
 /* Paleta base — RNF-002
    Verde medio protagonista, gris claro y blanco, acento azul (bandera de Limón)
-   y morado secundario. Footer en gris más oscuro para contraste. */
+   y morado secundario. Footer en azul de Limón más oscuro para contraste. */
 :root {
   --verde: #1f7a4d;
   --verde-fuerte: #14603a;
   --verde-suave: #e4f2ea;
   --azul: #1f6fb2;
+  --azul-footer: #103f63;
   --morado: #6b4ea3;
 
   --fondo: #f4f5f6;
   --superficie: #ffffff;
-  --footer: #23262b;
   --borde: #dcdfe3;
   --texto: #1c1f23;
   --texto-tenue: #55606a;
@@ -368,3 +368,92 @@ h3 {
   border-radius: 999px;
 }
 
+
+/* Pie de página — RF-010. Azul de Limón, más oscuro que el resto para contraste. */
+.footer {
+  background: var(--azul-footer);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 32px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: space-between;
+}
+
+.footer__col {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.footer__marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer__marca img {
+  height: 46px;
+  width: auto;
+}
+
+.footer__contacto,
+.footer__nav ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.footer__contacto a:hover,
+.footer__nav a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer__redes {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__redes a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.footer__redes a:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.footer__titulo {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.footer__creditos {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 18px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}

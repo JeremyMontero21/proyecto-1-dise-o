@@ -3,6 +3,7 @@ import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Carrusel from './components/Carrusel.jsx'
 import EnProgreso from './components/EnProgreso.jsx'
+import Footer from './components/Footer.jsx'
 import { conozcanos } from './data/conozcanos.js'
 import { gestion } from './data/gestion.js'
 
@@ -49,6 +50,7 @@ export default function App() {
           </>
         )}
       </main>
+      <Footer />
     </>
   )
 }
