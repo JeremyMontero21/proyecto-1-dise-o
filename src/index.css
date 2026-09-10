@@ -36,6 +36,13 @@ html {
   line-height: 1.5;
   color: var(--texto);
   background: var(--fondo);
+  scroll-behavior: smooth;
+}
+
+/* Deja espacio bajo la barra fija al saltar a una sección con ancla */
+:target,
+[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -120,33 +127,99 @@ h3 {
   border-bottom-color: var(--verde);
 }
 
-.navbar__drop {
-  position: relative;
+/* Mega menú de "Conózcanos" — panel ancho con las 4 categorías en columnas */
+.megamenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--superficie);
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
 }
 
-.navbar__submenu {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  min-width: 220px;
+.megamenu__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+}
+
+.megamenu__titulo {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--verde);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.megamenu ul {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  padding: 6px;
-  background: var(--superficie);
-  border: 1px solid var(--borde);
-  border-radius: 8px;
 }
 
-.navbar__submenu a {
-  padding: 9px 12px;
-  border-radius: 6px;
+.megamenu a {
+  display: block;
+  padding: 7px 0;
   font-size: 14px;
+  color: var(--texto-tenue);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.megamenu a:hover {
+  color: var(--verde);
+  transform: translateX(4px);
+}
+
+/* Página "en construcción" — RF-011 */
+.wip {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  text-align: center;
+}
+
+.wip__ruta {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--texto-tenue);
 }
 
-.navbar__submenu a:hover {
+.wip h1 {
+  font-size: 2rem;
+}
+
+.wip__estado {
+  padding: 6px 14px;
+  border-radius: 999px;
   background: var(--verde-suave);
+  color: var(--verde-fuerte);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.wip__volver {
+  margin-top: 8px;
+  padding: 10px 22px;
+  border: 2px solid var(--verde);
+  border-radius: 8px;
+  font-weight: 600;
   color: var(--verde);
+}
+
+.wip__volver:hover {
+  background: var(--verde);
+  color: var(--texto-inverso);
 }
 
 /* Hero de inicio — RF-001 */
@@ -193,5 +266,105 @@ h3 {
 .hero__cta:hover {
   background: transparent;
   border-color: var(--texto-inverso);
+}
+
+/* Carrusel de noticias — RF-005. Recuadro contenido, no a todo el ancho. */
+.carrusel {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.carrusel__marco {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+}
+
+.carrusel__pista {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carrusel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  color: var(--texto-inverso);
+}
+
+.carrusel__slide img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+.carrusel__texto {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 40px 28px 22px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+}
+
+.carrusel__texto h3 {
+  font-size: 1.25rem;
+}
+
+.carrusel__texto p {
+  font-size: 0.95rem;
+  color: rgba(244, 245, 246, 0.9);
+}
+
+.carrusel__flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--texto-inverso);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.carrusel__flecha:hover {
+  background: var(--azul);
+}
+
+.carrusel__flecha--prev {
+  left: 12px;
+}
+
+.carrusel__flecha--next {
+  right: 12px;
+}
+
+.carrusel__puntos {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carrusel__puntos button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--borde);
+}
+
+.carrusel__puntos button:hover {
+  background: var(--texto-tenue);
+}
+
+.carrusel__puntos button.is-activo {
+  background: var(--azul);
+  width: 24px;
+  border-radius: 999px;
 }
 

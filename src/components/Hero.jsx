@@ -9,9 +9,9 @@ export default function Hero() {
       <div className="hero__contenido">
         <h1>Bienvenidos a Limón</h1>
         <p>
-          La página oficial del cantón central de Limón.
+          La página oficial de la municipalidad del Cantón Central de Limón.
         </p>
-        <a className="hero__cta" href="#historia">
+        <a className="hero__cta" href="#noticias">
           Descubra más <span aria-hidden="true">↓</span>
         </a>
       </div>
