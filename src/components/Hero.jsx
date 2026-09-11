@@ -11,7 +11,7 @@ export default function Hero() {
         <p>
           La página oficial de la municipalidad del Cantón Central de Limón.
         </p>
-        <a className="hero__cta" href="#noticias">
+        <a className="hero__cta" href="#historia">
           Descubra más <span aria-hidden="true">↓</span>
         </a>
       </div>

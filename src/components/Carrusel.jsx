@@ -20,7 +20,13 @@ export default function Carrusel() {
           style={{ transform: `translateX(-${i * 100}%)` }}
         >
           {noticias.map((n) => (
-            <a key={n.titulo} className="carrusel__slide" href={n.href}>
+            <a
+              key={n.titulo}
+              className="carrusel__slide"
+              href={n.href}
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={n.img} alt="" />
               <div className="carrusel__texto">
                 <h3>{n.titulo}</h3>
