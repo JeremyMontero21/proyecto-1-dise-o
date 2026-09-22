@@ -3,6 +3,9 @@ import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Carrusel from './components/Carrusel.jsx'
 import Historia from './components/Historia.jsx'
+import Vision from './components/Vision.jsx'
+import Directorio from './components/Directorio.jsx'
+import Contacto from './components/Contacto.jsx'
 import Servicios from './components/Servicios.jsx'
 import Horarios from './components/Horarios.jsx'
 import Ubicacion from './components/Ubicacion.jsx'
@@ -28,6 +31,58 @@ const PAGINAS = {
 function resolver(hash) {
   const partes = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   if (partes.length === 0) return null
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'mi-canton' &&
+    partes[2] === 'historia-del-canton'
+  ) {
+    return {
+      titulo: 'Historia del cantón',
+      seccion: 'Conózcanos › Mi Cantón',
+      tipo: 'historia-canton',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'mi-municipalidad' &&
+    partes[2] === 'historia-municipal'
+  ) {
+    return {
+      titulo: 'Historia municipal',
+      seccion: 'Conózcanos › Mi Municipalidad',
+      tipo: 'historia-municipal',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'mi-municipalidad' &&
+    partes[2] === 'vision'
+  ) {
+    return {
+      titulo: 'Visión',
+      seccion: 'Conózcanos › Mi Municipalidad',
+      tipo: 'vision',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'mi-municipalidad' &&
+    partes[2] === 'directorio-telefonico'
+  ) {
+    return {
+      titulo: 'Directorio telefónico',
+      seccion: 'Conózcanos › Mi Municipalidad',
+      tipo: 'directorio',
+    }
+  }
+
+  if (partes.length === 1 && partes[0] === 'contacto') {
+    return { titulo: 'Contacto', seccion: 'Menú principal', tipo: 'contacto' }
+  }
 
   if (partes.length === 1) {
     const titulo = PAGINAS[partes[0]]
@@ -64,13 +119,25 @@ export default function App() {
   }, [hash])
 
   const wip = resolver(hash)
+  const mostrarHistoriaDetalle =
+    wip?.tipo === 'historia-canton' || wip?.tipo === 'historia-municipal'
 
   return (
     <>
       <Navbar />
       <main>
         {wip ? (
-          <EnProgreso titulo={wip.titulo} seccion={wip.seccion} />
+          wip.tipo === 'contacto' ? (
+            <Contacto />
+          ) : wip.tipo === 'directorio' ? (
+            <Directorio />
+          ) : wip.tipo === 'vision' ? (
+            <Vision />
+          ) : mostrarHistoriaDetalle ? (
+            <Historia detalle tipo={wip.tipo} />
+          ) : (
+            <EnProgreso titulo={wip.titulo} seccion={wip.seccion} />
+          )
         ) : (
           <>
             <Hero />

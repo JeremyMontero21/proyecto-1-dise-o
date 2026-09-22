@@ -15,6 +15,7 @@ export const conozcanos = [
     slug: 'mi-municipalidad',
     items: [
       { label: 'Historia Municipal', slug: 'historia-municipal' },
+      { label: 'Visión', slug: 'vision' },
       { label: 'Sobre nosotros', slug: 'sobre-nosotros' },
       { label: 'Directorio Telefónico', slug: 'directorio-telefonico' },
       { label: 'Horarios', href: '#horarios' },
