@@ -19,6 +19,8 @@ import SecretariaConsejo from './components/SecretariaConsejo.jsx'
 import ServicioCliente from './components/ServicioCliente.jsx'
 import GestionServiciosGenerales from './components/GestionServiciosGenerales.jsx'
 import TecnologiasInformacion from './components/TecnologiasInformacion.jsx'
+import SeguridadCiudadana from './components/SeguridadCiudadana.jsx'
+import Accesibilidad from './components/Accesibilidad.jsx'
 import NotFound from './components/NotFound.jsx'
 import EnProgreso from './components/EnProgreso.jsx'
 import Footer from './components/Footer.jsx'
@@ -208,6 +210,18 @@ function resolver(hash) {
   }
 
   if (
+    partes[0] === 'gestion-municipal' &&
+    partes[1] === 'direccion-administrativa' &&
+    partes[2] === 'gestion-de-seguridad-ciudadana-y-vial'
+  ) {
+    return {
+      titulo: 'Gestión de Seguridad Ciudadana y Vial',
+      seccion: 'Gestión Municipal › Dirección Administrativa',
+      tipo: 'seguridad-ciudadana',
+    }
+  }
+
+  if (
     partes[0] === 'conozcanos' &&
     partes[1] === 'mi-municipalidad' &&
     partes[2] === 'directorio-telefonico'
@@ -290,6 +304,8 @@ export default function App() {
             <GestionServiciosGenerales />
           ) : wip.tipo === 'tecnologias-informacion' ? (
             <TecnologiasInformacion />
+          ) : wip.tipo === 'seguridad-ciudadana' ? (
+            <SeguridadCiudadana />
           ) : wip.tipo === 'not-found' ? (
             <NotFound />
           ) : wip.tipo === 'sobre-nosotros' || wip.tipo === 'vision' ? (
@@ -311,6 +327,7 @@ export default function App() {
         )}
       </main>
       <Footer />
+      <Accesibilidad />
     </>
   )
 }
