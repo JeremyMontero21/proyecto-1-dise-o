@@ -5,7 +5,7 @@
   --verde: #1f7a4d;
   --verde-fuerte: #14603a;
   --verde-suave: #e4f2ea;
-  --verde-footer: #1b7146;
+  --verde-footer: #0d4f3b;
   --azul: #1f6fb2;
   --morado: #6b4ea3;
 
@@ -580,21 +580,21 @@ html.accesibilidad--guia body::after {
 .footer {
   background: var(--verde-footer);
   color: rgba(255, 255, 255, 0.82);
+  border-top: 4px solid var(--verde);
 }
 
 .footer__inner {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 48px 32px 32px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px;
-  justify-content: space-between;
+  padding: 52px 32px 40px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.25fr) minmax(220px, 0.75fr);
+  gap: 72px;
 }
 
 .footer__col {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   align-content: start;
 }
 
@@ -607,8 +607,12 @@ html.accesibilidad--guia body::after {
 }
 
 .footer__marca img {
-  height: 46px;
+  height: 52px;
   width: auto;
+}
+
+.footer__contacto {
+  line-height: 1.7;
 }
 
 .footer__contacto,
@@ -623,6 +627,15 @@ html.accesibilidad--guia body::after {
 .footer__nav a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.footer__contacto a:focus-visible,
+.footer__nav a:focus-visible,
+.footer__marca:focus-visible,
+.footer__redes a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .footer__redes {
@@ -643,6 +656,7 @@ html.accesibilidad--guia body::after {
 .footer__redes a:hover {
   color: #fff;
   border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .footer__titulo {
@@ -656,13 +670,32 @@ html.accesibilidad--guia body::after {
 
 .footer__creditos {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 18px 32px;
+  padding: 18px 32px 22px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 24px;
   justify-content: center;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 700px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 38px 22px 30px;
+  }
+
+  .footer__nav ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  .footer__creditos {
+    align-items: center;
+    padding: 16px 22px 20px;
+    text-align: center;
+  }
 }
 
 /* Botón genérico reutilizable */
