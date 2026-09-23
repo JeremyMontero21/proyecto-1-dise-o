@@ -9,6 +9,17 @@ import Contacto from './components/Contacto.jsx'
 import Servicios from './components/Servicios.jsx'
 import Horarios from './components/Horarios.jsx'
 import Ubicacion from './components/Ubicacion.jsx'
+import DespachoAlcaldia from './components/DespachoAlcaldia.jsx'
+import GestionVicealcaldia from './components/GestionVicealcaldia.jsx'
+import InformesGestion from './components/InformesGestion.jsx'
+import PlanesMunicipales from './components/PlanesMunicipales.jsx'
+import InformeLabores from './components/InformeLabores.jsx'
+import NormativaLegal from './components/NormativaLegal.jsx'
+import SecretariaConsejo from './components/SecretariaConsejo.jsx'
+import ServicioCliente from './components/ServicioCliente.jsx'
+import GestionServiciosGenerales from './components/GestionServiciosGenerales.jsx'
+import TecnologiasInformacion from './components/TecnologiasInformacion.jsx'
+import NotFound from './components/NotFound.jsx'
 import EnProgreso from './components/EnProgreso.jsx'
 import Footer from './components/Footer.jsx'
 import { conozcanos } from './data/conozcanos.js'
@@ -59,12 +70,140 @@ function resolver(hash) {
   if (
     partes[0] === 'conozcanos' &&
     partes[1] === 'mi-municipalidad' &&
-    partes[2] === 'vision'
+    (partes[2] === 'sobre-nosotros' || partes[2] === 'vision')
   ) {
     return {
-      titulo: 'Visión',
+      titulo: 'Sobre nosotros',
       seccion: 'Conózcanos › Mi Municipalidad',
-      tipo: 'vision',
+      tipo: 'sobre-nosotros',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'despacho-de-la-alcaldia'
+  ) {
+    return {
+      titulo: 'Despacho de la Alcaldía',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'despacho-alcaldia',
+    }
+  }
+
+  if (partes[0] === '404') {
+    return {
+      titulo: 'Página no disponible',
+      seccion: 'Error 404',
+      tipo: 'not-found',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'gestion-de-vicealcaldia'
+  ) {
+    return {
+      titulo: 'Gestión de Vicealcaldía',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'gestion-vicealcaldia',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'informes-de-gestion'
+  ) {
+    return {
+      titulo: 'Informes de Gestión',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'informes-gestion',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'planes-municipales'
+  ) {
+    return {
+      titulo: 'Planes Municipales',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'planes-municipales',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'informe-de-labores'
+  ) {
+    return {
+      titulo: 'Informe de Labores',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'informe-labores',
+    }
+  }
+
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'alcaldia' &&
+    partes[2] === 'normativa-legal'
+  ) {
+    return {
+      titulo: 'Normativa Legal',
+      seccion: 'Conózcanos › Alcaldía',
+      tipo: 'normativa-legal',
+    }
+  }
+  if (
+    partes[0] === 'conozcanos' &&
+    partes[1] === 'concejo-municipal' &&
+    partes[2] === 'secretaria-del-concejo'
+  ) {
+    return {
+      titulo: 'Secretaría del Concejo',
+      seccion: 'Conózcanos › Concejo Municipal',
+      tipo: 'secretaria-consejo',
+    }
+  }
+
+  if (
+    partes[0] === 'gestion-municipal' &&
+    partes[1] === 'direccion-administrativa' &&
+    partes[2] === 'servicio-al-cliente' &&
+    (!partes[3] || partes[3] === 'ventanilla-unica' || partes[3] === 'inspeccion-general')
+  ) {
+    return {
+      titulo: !partes[3] ? 'Servicio al Cliente' : partes[3] === 'ventanilla-unica' ? 'Ventanilla Única' : 'Inspección General',
+      seccion: 'Gestión Municipal › Dirección Administrativa',
+      tipo: 'servicio-cliente',
+    }
+  }
+
+  if (
+    partes[0] === 'gestion-municipal' &&
+    partes[1] === 'direccion-administrativa' &&
+    partes[2] === 'gestion-y-servicios-generales'
+  ) {
+    return {
+      titulo: 'Gestión y Servicios Generales',
+      seccion: 'Gestión Municipal › Dirección Administrativa',
+      tipo: 'gestion-servicios-generales',
+    }
+  }
+
+  if (
+    partes[0] === 'gestion-municipal' &&
+    partes[1] === 'direccion-administrativa' &&
+    partes[2] === 'tecnologias-de-informacion'
+  ) {
+    return {
+      titulo: 'Tecnologías de Información',
+      seccion: 'Gestión Municipal › Dirección Administrativa',
+      tipo: 'tecnologias-informacion',
     }
   }
 
@@ -131,7 +270,29 @@ export default function App() {
             <Contacto />
           ) : wip.tipo === 'directorio' ? (
             <Directorio />
-          ) : wip.tipo === 'vision' ? (
+          ) : wip.tipo === 'despacho-alcaldia' ? (
+            <DespachoAlcaldia />
+          ) : wip.tipo === 'gestion-vicealcaldia' ? (
+            <GestionVicealcaldia />
+          ) : wip.tipo === 'informes-gestion' ? (
+            <InformesGestion />
+          ) : wip.tipo === 'planes-municipales' ? (
+            <PlanesMunicipales />
+          ) : wip.tipo === 'informe-labores' ? (
+            <InformeLabores />
+          ) : wip.tipo === 'normativa-legal' ? (
+            <NormativaLegal />
+          ) : wip.tipo === 'secretaria-consejo' ? (
+            <SecretariaConsejo />
+          ) : wip.tipo === 'servicio-cliente' ? (
+            <ServicioCliente />
+          ) : wip.tipo === 'gestion-servicios-generales' ? (
+            <GestionServiciosGenerales />
+          ) : wip.tipo === 'tecnologias-informacion' ? (
+            <TecnologiasInformacion />
+          ) : wip.tipo === 'not-found' ? (
+            <NotFound />
+          ) : wip.tipo === 'sobre-nosotros' || wip.tipo === 'vision' ? (
             <Vision />
           ) : mostrarHistoriaDetalle ? (
             <Historia detalle tipo={wip.tipo} />
