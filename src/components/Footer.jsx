@@ -38,11 +38,7 @@ export default function Footer() {
         <div className="footer__col">
           <a className="footer__marca" href="#/">
             <img src={escudo} alt="" />
-            <span>
-              Municipalidad
-              <br />
-              de Limón
-            </span>
+            <span>Municipalidad de Limón</span>
           </a>
           <ul className="footer__contacto">
             <li>Ciudad de Limón, Costa Rica</li>

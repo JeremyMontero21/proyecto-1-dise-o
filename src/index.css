@@ -47,6 +47,18 @@ html {
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 img {
@@ -586,33 +598,76 @@ html.accesibilidad--guia body::after {
 .footer__inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 52px 32px 40px;
+  padding: 34px 32px 26px;
   display: grid;
-  grid-template-columns: minmax(260px, 1.25fr) minmax(220px, 0.75fr);
-  gap: 72px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
 }
 
 .footer__col {
   display: grid;
-  gap: 18px;
+  gap: 12px;
   align-content: start;
+}
+
+.footer__inner > .footer__col:first-child {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.footer__inner > .footer__col:first-child .footer__marca {
+  flex: 0 0 auto;
+}
+
+.footer__identidad {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.footer__inner > .footer__col:first-child .footer__contacto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  list-style: none;
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.footer__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .footer__marca {
   display: flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
   font-weight: 700;
   color: #fff;
 }
 
 .footer__marca img {
-  height: 52px;
+  height: 46px;
   width: auto;
 }
 
 .footer__contacto {
   line-height: 1.7;
+  min-width: 0;
 }
 
 .footer__contacto,
@@ -623,10 +678,20 @@ html.accesibilidad--guia body::after {
   font-size: 14px;
 }
 
+.footer__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
 .footer__contacto a:hover,
 .footer__nav a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.footer__nav a {
+  overflow-wrap: anywhere;
 }
 
 .footer__contacto a:focus-visible,
@@ -670,7 +735,7 @@ html.accesibilidad--guia body::after {
 
 .footer__creditos {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 18px 32px 22px;
+  padding: 13px 32px 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 24px;
@@ -681,9 +746,43 @@ html.accesibilidad--guia body::after {
 
 @media (max-width: 700px) {
   .footer__inner {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 34px;
-    padding: 38px 22px 30px;
+    gap: 24px;
+    padding: 28px 22px 22px;
+  }
+
+  .footer__inner > .footer__col:first-child {
+    display: grid;
+    gap: 12px;
+  }
+
+  .footer__identidad {
+    justify-items: start;
+  }
+
+  .footer__marca {
+    white-space: normal;
+  }
+
+  .footer__nav {
+    display: grid;
+    gap: 10px;
+    margin-left: 0;
+    min-width: 0;
+  }
+
+  .footer__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px 16px;
+  }
+
+  .footer__nav li,
+  .footer__nav a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .footer__nav ul {
@@ -695,6 +794,17 @@ html.accesibilidad--guia body::after {
     align-items: center;
     padding: 16px 22px 20px;
     text-align: center;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1050px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer__nav {
+    justify-content: flex-start;
   }
 }
 
