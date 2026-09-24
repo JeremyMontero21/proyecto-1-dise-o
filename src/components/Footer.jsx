@@ -40,15 +40,6 @@ export default function Footer() {
             <img src={escudo} alt="" />
             <span>Municipalidad de Limón</span>
           </a>
-          <ul className="footer__contacto">
-            <li>Ciudad de Limón, Costa Rica</li>
-            <li>
-              <a href="tel:+50627580303">(506) 2758-0303</a>
-            </li>
-            <li>
-              <a href="mailto:info@municlimon.go.cr">info@municlimon.go.cr</a>
-            </li>
-          </ul>
           <div className="footer__redes">
             {redes.map((r) => (
               <a
@@ -76,6 +67,19 @@ export default function Footer() {
             ))}
           </ul>
         </nav>
+
+        <div className="footer__col footer__contacto-bloque">
+          <p className="footer__titulo">Contáctenos</p>
+          <ul className="footer__contacto">
+            <li>Ciudad de Limón, Costa Rica</li>
+            <li>
+              <a href="tel:+50627580303">(506) 2758-0303</a>
+            </li>
+            <li>
+              <a href="mailto:info@municlimon.go.cr">info@municlimon.go.cr</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="footer__creditos">
